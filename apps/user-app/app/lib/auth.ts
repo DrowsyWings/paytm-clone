@@ -1,6 +1,7 @@
 import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import z from "zod";
 
 export const authOptions = {
   providers: [
@@ -13,11 +14,18 @@ export const authOptions = {
           placeholder: "123456789",
           required: true,
         },
-        password: { label: "Password", type: "password", required: true },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "*********",
+          required: true,
+        },
       },
       // TODO: User credentials type from next-auth
       async authorize(credentials: any) {
-        // Do zod validation, OTP validation here
+        // TODO Do zod validation, OTP validation here
+        const inputSchema = z.object({});
+
         const hashedPassword = await bcrypt.hash(credentials.password, 10);
         const existingUser = await db.user.findFirst({
           where: {
