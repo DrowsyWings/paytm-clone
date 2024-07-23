@@ -39,10 +39,10 @@ export default async function () {
 
   return (
     <div className="w-screen">
-      <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
+      <div className="text-4xl pl-4 bg-gradient-to-r from-sky-100 to-indigo-200 text-[#6a51a6] pt-8 pb-8 font-bold">
         Transfer
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 p-4">
+      <div className="bg-gradient-to-r from-sky-100 to-indigo-200 grid grid-cols-1 gap-4 md:grid-cols-2 p-4">
         <div>
           <AddMoney />
         </div>

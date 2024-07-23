@@ -1,20 +1,22 @@
 import express from "express";
 import db from "@repo/db/client";
 import zod from "zod";
-const app = express();
+import cors from "cors";
 
+const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.post("/hdfc", async (req, res) => {
   const paymentinfoSchema = zod.object({
     token: zod.string(),
-    userId: zod.string(),
+    userId: zod.number(),
     amount: zod.string(),
   });
   //TODO: Check if this onRampTxns is processing or not
   const paymentInformation: {
     token: string;
-    userId: string;
+    userId: number;
     amount: string;
   } = {
     token: req.body.token,
@@ -32,7 +34,7 @@ app.post("/hdfc", async (req, res) => {
       //*First query
       db.balance.updateMany({
         where: {
-          userId: Number(paymentInformation.userId),
+          userId: paymentInformation.userId,
         },
         data: {
           amount: {
@@ -51,7 +53,7 @@ app.post("/hdfc", async (req, res) => {
         },
       }),
     ]);
-    res.json({ message: "Captured" });
+    res.status(200).json({ message: "Captured" });
   } catch (e) {
     console.error(e);
     res.status(411).json({

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#e0f2fe"/>  {/* sky-100 */}
+      <stop offset="100%" stopColor="#c7d2fe"/>  {/* indigo-200 */}
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#backgroundGradient)"/>
+  
+  <path d="M50 150 L100 50 L150 150" fill="none" stroke="#5d3fd3" strokeWidth="12"/>
+  
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#4a1d96"/>
+      <stop offset="100%" stopColor="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <text x="250" y="120" fontFamily="Arial, sans-serif" fontSize="48" fontWeight="bold" fill="url(#textGradient)" textAnchor="middle">CME PAY</text>
+</svg>
