@@ -16,7 +16,7 @@ const SUPPORTED_BANKS = [
   },
 ];
 
-export const AddMoney = async () => {
+export const AddMoney = () => {
   const [redirectUrl, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl
   );
@@ -73,19 +73,18 @@ export const AddMoney = async () => {
                   parseInt(amount) * 100,
                   provider
                 );
+
                 const response = await axios.post(
                   "http://localhost:3003/hdfc",
                   {
                     token: result.token,
-                    amount: amount,
+                    amount: parseInt(amount) * 100,
                     userId: result.userId,
                   }
                 );
                 if (response.status === 200) {
                   setIsLoading(false);
-                  // You might want to handle successful transaction here
-                  // For example, show a success message or redirect
-                  // window.location.href = redirectUrl || "";
+                  window.location.href = "/transfer";
                 }
               } catch (error) {
                 setIsLoading(false);

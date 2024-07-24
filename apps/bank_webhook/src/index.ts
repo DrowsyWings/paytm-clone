@@ -11,16 +11,16 @@ app.post("/hdfc", async (req, res) => {
   const paymentinfoSchema = zod.object({
     token: zod.string(),
     userId: zod.number(),
-    amount: zod.string(),
+    amount: zod.number(),
   });
   //TODO: Check if this onRampTxns is processing or not
   const paymentInformation: {
     token: string;
     userId: number;
-    amount: string;
+    amount: number;
   } = {
     token: req.body.token,
-    userId: req.body.user_Identifier,
+    userId: req.body.userId,
     amount: req.body.amount,
   };
 
@@ -38,7 +38,7 @@ app.post("/hdfc", async (req, res) => {
         },
         data: {
           amount: {
-            increment: Number(paymentInformation.amount),
+            increment: paymentInformation.amount,
           },
         },
       }),

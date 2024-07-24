@@ -21,11 +21,11 @@ export const OnRampTransactions = ({
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "processing":
-        return "bg-yellow-100 border-yellow-300 text-yellow-800";
+        return " border-yellow-300 text-yellow-500";
       case "failure":
-        return "bg-red-100 border-red-300 text-red-800";
+        return " border-red-300 text-red-500";
       case "success":
-        return "bg-green-100 border-green-300 text-green-800";
+        return " border-green-300 text-green-500";
       default:
         return "bg-gray-100 border-gray-300 text-gray-800";
     }
